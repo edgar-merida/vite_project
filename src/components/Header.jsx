@@ -5,7 +5,7 @@ const Header = ({ title }) => {
 
   return (
     <header>
-      <h1 style={estilos}>{title}</h1>
+      <h1 style={es}>{title}</h1>
     </header>
   );
 };
