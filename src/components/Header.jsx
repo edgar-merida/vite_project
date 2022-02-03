@@ -17,7 +17,7 @@ const eliminar = () => {
     <header className='header'>
       <h1>{title}</h1>
       <Button color='green' text='Agregar' onClick={agregar}/>
-      <Button color='red' text='Eliminar' onClick={eliminar}/>
+    
      
     </header>
   );
