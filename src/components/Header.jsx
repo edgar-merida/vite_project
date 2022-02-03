@@ -1,3 +1,4 @@
+import {FaTasks} from 'react-icons/fa'
 import PropTypes from 'prop-types'
 import Button from './Button';
 
@@ -15,7 +16,7 @@ const eliminar = () => {
 
   return (
     <header className='header'>
-      <h1>{title}</h1>
+      <h1><FaTasks/>{title}</h1>
       <Button color='green' text='Agregar' onClick={agregar}/>
     
      
