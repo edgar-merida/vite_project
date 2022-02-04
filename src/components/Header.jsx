@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Button from './Button';
 
 
-const Header = ({ title }) => {
+const Header = ({ title, onAdd, showAdd }) => {
 
   const agregar = () => {
     console.log('agregar')
@@ -17,7 +17,7 @@ const eliminar = () => {
   return (
     <header className='header'>
       <h1><FaTasks/>{title}</h1>
-      <Button color='green' text='Agregar' onClick={agregar}/>
+      <Button color={showAdd? 'red' : 'green'} text={showAdd? 'Cerrar' : 'Agregar'} onClick={onAdd}/>
     
      
     </header>

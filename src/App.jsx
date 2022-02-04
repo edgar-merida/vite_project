@@ -5,6 +5,9 @@ import AddTarea from './components/AddTarea';
 
 function App() {
 
+  const [showAdd, setShowAdd] = useState(false)
+
+
   const [tasks, setTasks] = useState ([
     
     {
@@ -27,6 +30,17 @@ function App() {
     }
 ])
 
+//agregar una tarea
+const addTask = (task) => {
+ // console.log(task)
+
+const id = Math.floor(Math.random() * 10000) + 1
+const newTarea = {id, ...task}
+setTasks([...tasks, newTarea])
+
+}
+
+
 //eliminar tarea
 const deleteTask = (id) =>{
   //console.log('borrar', id)
@@ -39,12 +53,12 @@ const togleTerminado = (id) => {
   setTasks(tasks.map((task)=>task.id === id ? {...task, terminado : !task.terminado}:task))
 }
 
-
+//if ternario sin else es con doble amperson && linea 60
   return (
     <div className="container">
-      <Header title='Tareas' />
-      <AddTarea />
-     {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={togleTerminado} />:'No hay tareas que mostrar' }
+    <Header title='Tareas' onAdd={()=> setShowAdd(!showAdd)} showAdd={showAdd}/>
+    {showAdd && <AddTarea onAdd={addTask}/>} 
+    {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={togleTerminado} />:'No hay tareas que mostrar' }
     </div>
   )
 }
