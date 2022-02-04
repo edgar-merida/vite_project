@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from "./components/Header"
-import Task from './components/Task';
 import Tasks from "./components/Tasks"
+import AddTarea from './components/AddTarea';
 
 function App() {
 
@@ -33,10 +33,18 @@ const deleteTask = (id) =>{
   setTasks(tasks.filter((task)=> task.id !== id))
 }
 
+//marcar como terminado
+const togleTerminado = (id) => {
+  //console.log(id)
+  setTasks(tasks.map((task)=>task.id === id ? {...task, terminado : !task.terminado}:task))
+}
+
+
   return (
     <div className="container">
       <Header title='Tareas' />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      <AddTarea />
+     {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={togleTerminado} />:'No hay tareas que mostrar' }
     </div>
   )
 }
